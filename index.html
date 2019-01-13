@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chiquito's sudoku</title>
+    <script src="jsLPSolver.js"></script>
+    <script src="Sudoku4x4.json"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body onload="displayGrid()">
+
+    <div id="game_grid"></div>
+
+    <form>
+      Cell number:<br>
+      <input type="text" name="cell-number" id="input-number">
+      <input type="button" value="Click me" onclick="selectNumber()">
+    </form>
+
+  <script src="sudoku.js"></script>
+  <!-- <script src="lp.js"></script> -->
+  </body>
+</html>
