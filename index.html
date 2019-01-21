@@ -3,21 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Chiquito's sudoku</title>
-    <script src="jsLPSolver.js"></script>
-    <script src="Sudoku4x4.json"></script>
+    <script src="glpk.min.js"></script>
+    <!-- <script src="Sudoku4x4.json"></script> -->
     <link rel="stylesheet" href="styles.css">
   </head>
   <body onload="displayGrid()">
 
     <div id="game_grid"></div>
 
-    <form>
-      Cell number:<br>
-      <input type="text" name="cell-number" id="input-number">
-      <input type="button" value="Click me" onclick="selectNumber()">
-    </form>
+    <div class="button-array">
+      <button class="button" id="n1" onclick="getCellNumber(1)">1</button>
+      <button class="button" id="n2" onclick="getCellNumber(2)">2</button>
+      <button class="button" id="n3" onclick="getCellNumber(3)">3</button>
+      <button class="button" id="n4" onclick="getCellNumber(4)">4</button>
+      <button class="button" id="n5" onclick="getCellNumber(5)">5</button>
+      <button class="button" id="n6" onclick="getCellNumber(6)">6</button>
+      <button class="button" id="n7" onclick="getCellNumber(7)">7</button>
+      <button class="button" id="n8" onclick="getCellNumber(8)">8</button>
+      <button class="button" id="n9" onclick="getCellNumber(9)">9</button>
+      <button class="button" id="start" onclick="solveMILP()">Solve!</button>
+      <button class="button" id="reset" onclick="reset()">Reset</button>
+    </div>
 
+
+
+  <script src="lp.js"></script>
   <script src="sudoku.js"></script>
-  <!-- <script src="lp.js"></script> -->
   </body>
 </html>
