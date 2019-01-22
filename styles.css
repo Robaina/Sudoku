@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    /* overflow: hidden; */
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
 }
 
@@ -54,10 +54,10 @@ body, html {
 }
 
 .button {
-  padding: 1vmax;
+  padding: 1vmin;
   font-size: 2.5vmin;
-  width: 7.2vmin;
-  background-color: rgb(115, 136, 136);
+  width: 10vmin;
+  background-color: rgb(186, 24, 83);
   border: none;
   color: white;
   text-align: center;
@@ -71,11 +71,6 @@ body, html {
   box-shadow: 0 0.5vmax rgb(221, 221, 221);
 }
 .button:active {
-  box-shadow: 0 0.3vw rgb(102, 102, 102);
+  box-shadow: 0 0.3vw rgb(184, 65, 108);
   transform: translateY(4px);
-}
-
-#start, #reset {
-  background-color: rgb(186, 24, 83);
-  width: 8.5vmin;
 }

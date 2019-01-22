@@ -1,14 +1,15 @@
 let ncols = nrows = 3;
 let selectedCell;
-let selectedCells = ["x012", "x053", "x084",
-                     "x108", "x137", "x163",
-                     "x179", "x227", "x276",
-                     "x281", "x323", "x347",
-                     "x388", "x426", "x452",
-                     "x461", "x473", "x505",
-                     "x614", "x638", "x686",
-                     "x728", "x741", "x772",
-                     "x815", "x859"];
+// let selectedCells = ["x012", "x053", "x084",
+//                      "x108", "x137", "x163",
+//                      "x179", "x227", "x276",
+//                      "x281", "x323", "x347",
+//                      "x388", "x426", "x452",
+//                      "x461", "x473", "x505",
+//                      "x614", "x638", "x686",
+//                      "x728", "x741", "x772",
+//                      "x815", "x859"];
+let selectedCells = [];
 let selectedCellsNumbers = [];
 
 
@@ -24,9 +25,10 @@ function fillGrid() {
       let xcoor = (nrows*bigcoor.x + smallcoor.x);
       let ycoor = (ncols*bigcoor.y + smallcoor.y);
       let smallCell = document.getElementById("x" + xcoor + ycoor);
-
-      smallCell.style.color = "rgb(240, 239, 239)";
-      smallCell.innerHTML = grid_numbers["" + xcoor + ycoor];
+      if (smallCell.innerHTML === "-") {
+        smallCell.style.color = "rgb(240, 239, 239)";
+        smallCell.innerHTML = grid_numbers["" + xcoor + ycoor];
+      }
     }
   }
 }
@@ -55,6 +57,7 @@ function displayGrid() {
       let ycoor = (ncols*bigcoor.y + smallcoor.y);
 
       smallcell.setAttribute("id", "x" + xcoor + ycoor);
+      smallcell.setAttribute("contenteditable", "true");
 
       smallcell.addEventListener("click", selectCell);
       smallcell.addEventListener("touch", selectCell);
@@ -95,12 +98,24 @@ function selectCell(event) {
   selectedCell.style.color = "rgb(240, 239, 239)";
 }
 
-function getCellNumber(number) {
-  selectedCell.innerHTML = number.toString();
-  selectedCell.classList.remove("selected-cell");
-  // selectedCell.classList.add("filled-cell");
-  selectedCell.style.color = "rgb(240, 239, 239)";
-  selectedCells.push(selectedCell.id + number);
+function getCellNumbers() {
+  for (let n=0; n<nrows*ncols; n++) {
+
+    let bigcoor = get2DCoordinates(n, ncols);
+    for (let j=0; j<nrows*ncols; j++) {
+
+      let smallcoor = get2DCoordinates(j, ncols);
+      let xcoor = (nrows*bigcoor.x + smallcoor.x);
+      let ycoor = (ncols*bigcoor.y + smallcoor.y);
+      let smallCell = document.getElementById("x" + xcoor + ycoor);
+      let initialCondition = smallCell.innerHTML;
+
+      if (initialCondition !== "-") {
+        smallCell.style.color = "rgb(0, 0, 0)";
+        selectedCells.push(smallCell.id + initialCondition);
+      }
+    }
+  }
 }
 
 function removeSelected() {
@@ -116,5 +131,6 @@ function reset() {
   for (let i=0; i<cells.length; i++) {
     cells[i].innerHTML = "-";
     cells[i].style.color = "rgba(240, 239, 239, 0)";
+    // cells[i].style.color = "rgb(240, 239, 239)";
   }
 }

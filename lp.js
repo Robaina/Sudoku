@@ -81,14 +81,17 @@ function addInitialCondition() {
   return c_str
 }
 
-// let model_str = "";
-let solution = {};
+let solution;
 let value;
-// let nrows = ncols = 2;
 
 function solveMILP() {
+
   let model_str = "";
+  solution = {};
+  
   removeSelected();
+  getCellNumbers();
+
   // Reformat programs to glpk.js
   model_str += "Minimize\n+x001\n" + writeConstraints() + addInitialCondition() + writeBinaryVariables() + "\nEnd";
 
