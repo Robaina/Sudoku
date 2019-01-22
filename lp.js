@@ -88,7 +88,7 @@ function solveMILP() {
 
   let model_str = "";
   solution = {};
-  
+
   removeSelected();
   getCellNumbers();
 
@@ -113,6 +113,11 @@ function solveMILP() {
       solution[glp_get_col_name(lp, i)] = value;
     }
   }
-  fillGrid();
+  if (Object.keys(solution).length > 0) {
+    fillGrid();
+  } else {
+    alert("Invalid input!");
+  }
+  
   return solution
 }
