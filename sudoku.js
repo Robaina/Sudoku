@@ -95,6 +95,7 @@ function selectCell(event) {
   selectedCell = event.target;
   removeSelected();
   selectedCell.classList.add("selected-cell");
+  selectedCell.innerHTML = "";
   selectedCell.style.color = "rgb(240, 239, 239)";
 }
 
