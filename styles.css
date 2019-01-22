@@ -5,12 +5,17 @@ body, html {
     padding: 0;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
+    --cell-color: rgba(50, 50, 50, 1);
+    /* rgb(32, 86, 131); */
+    --highlighted-cell-color: rgb(51, 127, 190);
+    --number-color: rgb(240, 239, 239);
+    --border-color: rgb(159, 159, 159);
 }
 
 #game_grid {
   display: grid;
   background-color: rgba(50, 50, 50, 1);
-  border: 0.5vmin solid rgb(159, 159, 159);
+  border: 0.5vmin solid var(--border-color);
   margin-left: calc(0.5 * (100vw - 80vmin));
   margin-top: calc(0.25 * (100vh - 80vmin));
   width: 80vmin;
@@ -19,13 +24,13 @@ body, html {
 
 .big-cell {
   display: grid;
-  background-color: rgb(32, 86, 131);
-  border: 0.5vmin solid rgb(159, 159, 159);
+  background-color: var(--cell-color);
+  border: 0.5vmin solid var(--border-color);
 }
 
 .small-cell {
-  background-color: rgb(32, 86, 131);
-  border: 0.1vmin solid rgb(159, 159, 159);
+  background-color: var(--cell-color);
+  border: 0.1vmin solid var(--border-color);
   color: rgb(240, 239, 239, 0);
   font-size: 3.5em;
   text-align: center;
@@ -33,15 +38,9 @@ body, html {
 }
 
 .selected-cell {
-  background-color: rgb(51, 127, 190);
-  border: 0.1vmin solid rgb(159, 159, 159);
-  color: rgb(240, 239, 239);
-}
-
-.filled-cell {
-  background-color: rgb(51, 127, 190);
-  border: 0.1vmin solid rgb(159, 159, 159);
-  color = rgb(240, 239, 239);
+  background-color: var(--highlighted-cell-color);
+  border: 0.1vmin solid var(--border-color);
+  color: var(--number-color);
 }
 
 .button-array {
@@ -55,9 +54,10 @@ body, html {
 
 .button {
   padding: 1vmin;
-  font-size: 2.5vmin;
-  width: 10vmin;
-  background-color: rgb(186, 24, 83);
+  font-size: 4vmin;
+  width: 14vmin;
+  height: 8vmin;
+  background-color: var(--highlighted-cell-color);
   border: none;
   color: white;
   text-align: center;
@@ -71,6 +71,6 @@ body, html {
   box-shadow: 0 0.5vmax rgb(221, 221, 221);
 }
 .button:active {
-  box-shadow: 0 0.3vw rgb(184, 65, 108);
+  box-shadow: 0 0.3vw var(--highlighted-cell-color);
   transform: translateY(4px);
 }

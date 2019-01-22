@@ -25,6 +25,7 @@ function fillGrid() {
       let xcoor = (nrows*bigcoor.x + smallcoor.x);
       let ycoor = (ncols*bigcoor.y + smallcoor.y);
       let smallCell = document.getElementById("x" + xcoor + ycoor);
+
       if (smallCell.innerHTML === "-") {
         smallCell.style.color = "rgb(240, 239, 239)";
         smallCell.innerHTML = grid_numbers["" + xcoor + ycoor];
@@ -114,7 +115,7 @@ function getCellNumbers() {
       let initialCondition = smallCell.innerHTML;
 
       if (initialCondition !== "-") {
-        smallCell.style.color = "rgb(0, 0, 0)";
+        smallCell.style.color = "rgb(68, 158, 233)";
         selectedCells.push(smallCell.id + initialCondition);
       }
     }
@@ -135,6 +136,5 @@ function reset() {
   for (let i=0; i<cells.length; i++) {
     cells[i].innerHTML = "-";
     cells[i].style.color = "rgba(240, 239, 239, 0)";
-    // cells[i].style.color = "rgb(240, 239, 239)";
   }
 }
