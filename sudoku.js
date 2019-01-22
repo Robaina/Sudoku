@@ -95,7 +95,9 @@ function selectCell(event) {
   selectedCell = event.target;
   removeSelected();
   selectedCell.classList.add("selected-cell");
-  selectedCell.innerHTML = "";
+  if (selectedCell.innerHTML === "-") {
+    selectedCell.innerHTML = "";
+  }
   selectedCell.style.color = "rgb(240, 239, 239)";
 }
 
@@ -128,6 +130,7 @@ function removeSelected() {
 
 function reset() {
   selectedCells = [];
+  removeSelected();
   let cells = document.getElementsByClassName("small-cell");
   for (let i=0; i<cells.length; i++) {
     cells[i].innerHTML = "-";
