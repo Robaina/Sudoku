@@ -19,6 +19,15 @@ h1 {
   font-family: fantasy;
   font-size: 6vw;
   color: var(--number-color);
+  margin-top: 10vh;
+}
+
+footer {
+  color: var(--number-color);
+  position: absolute;
+  bottom: 5vh;
+  left: 5vw;
+  font-size: 1.3vw;
 }
 
 #game_grid {
