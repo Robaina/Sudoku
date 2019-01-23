@@ -10,16 +10,24 @@ body, html {
     --highlighted-cell-color: rgb(51, 127, 190);
     --number-color: rgb(240, 239, 239);
     --border-color: rgb(159, 159, 159);
+    --grid-width: 60vmin;
+    --button-array-width: calc(0.5 * var(--grid-width));
+}
+
+h1 {
+  text-align: center;
+  font-family: fantasy;
+  font-size: 6vw;
+  color: var(--number-color);
 }
 
 #game_grid {
   display: grid;
-  background-color: rgba(50, 50, 50, 1);
   border: 0.5vmin solid var(--border-color);
-  margin-left: calc(0.5 * (100vw - 80vmin));
-  margin-top: calc(0.25 * (100vh - 80vmin));
-  width: 80vmin;
-  height: 80vmin;
+  margin-left: calc(0.5 * (100vw - var(--grid-width)));
+  /* margin-top: calc(0.25 * (100vh - var(--grid-width))); */
+  width: var(--grid-width);
+  height: var(--grid-width);
 }
 
 .big-cell {
@@ -31,8 +39,8 @@ body, html {
 .small-cell {
   background-color: var(--cell-color);
   border: 0.1vmin solid var(--border-color);
-  color: rgb(240, 239, 239, 0);
-  font-size: 3.5em;
+  color: rgba(240, 239, 239, 0);
+  font-size: calc(0.073 * var(--grid-width));
   text-align: center;
   padding-top: 5%;
 }
@@ -44,31 +52,30 @@ body, html {
 }
 
 .button-array {
-  width: 70vmin;
+  width: var(--button-array-width);
   height: auto;
-  margin-left: calc(0.5 * (100vw - 80vmin));
-  position: absolute;
-  top: calc(80vmin + 0.25 * (100vh - 80vmin));
-
+  margin-left: calc(0.5 * (100vw - var(--grid-width)) + 0.5 * var(--grid-width));
+  margin-top: calc(0.07 * var(--button-array-width));
 }
 
 .button {
-  padding: 1vmin;
-  font-size: 4vmin;
-  width: 14vmin;
-  height: 8vmin;
+  font-size: calc(0.12 * var(--button-array-width));
+  width: calc(0.44 * var(--button-array-width));
+  height: calc(0.25 * var(--button-array-width));
   background-color: var(--highlighted-cell-color);
   border: none;
   color: white;
   text-align: center;
   text-decoration: none;
   display: inline;
-  margin: 1em 0em;
+  margin-top: calc(0.1 * var(--button-array-width));
+  margin-right: calc(0.02 * var(--button-array-width));
+  padding: 0;
   cursor: pointer;
-  border-radius: 1vmax;
+  border-radius: 10%;
   user-select: none;
   outline: none;
-  box-shadow: 0 0.5vmax rgb(221, 221, 221);
+  box-shadow: 0 calc(0.03 * var(--button-array-width)); rgb(221, 221, 221);
 }
 .button:active {
   box-shadow: 0 0.3vw var(--highlighted-cell-color);

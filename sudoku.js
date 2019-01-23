@@ -30,6 +30,7 @@ function fillGrid() {
         smallCell.style.color = "rgb(240, 239, 239)";
         smallCell.innerHTML = grid_numbers["" + xcoor + ycoor];
       }
+      
     }
   }
 }
