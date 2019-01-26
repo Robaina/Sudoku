@@ -12,6 +12,8 @@ body, html {
     --border-color: rgb(159, 159, 159);
     --grid-width: 60vmin;
     --button-array-width: calc(0.5 * var(--grid-width));
+    --l-border-width: calc(0.007*var(--grid-width));
+    --s-border-width: calc(0.0025*var(--grid-width));
 }
 
 h1 {
@@ -32,7 +34,7 @@ footer {
 
 #game_grid {
   display: grid;
-  border: 0.5vmin solid var(--border-color);
+  border: var(--l-border-width) solid var(--border-color);
   margin-left: calc(0.5 * (100vw - var(--grid-width)));
   /* margin-top: calc(0.25 * (100vh - var(--grid-width))); */
   width: var(--grid-width);
@@ -42,22 +44,34 @@ footer {
 .big-cell {
   display: grid;
   background-color: var(--cell-color);
-  border: 0.5vmin solid var(--border-color);
+  border: var(--l-border-width) solid var(--border-color);
+}
+
+.selected-cell {
+  background-color: var(--highlighted-cell-color);
+  color: var(--number-color);
+}
+
+.unselected-cell {
+  background-color: var(--cell-color);
+  color: var(--number-color);
+}
+
+.empty-cell {
+  background-color: var(--cell-color);
+  color: rgba(240, 239, 239, 0);
 }
 
 .small-cell {
-  background-color: var(--cell-color);
-  border: 0.1vmin solid var(--border-color);
-  color: rgba(240, 239, 239, 0);
+  border: var(--s-border-width) solid var(--border-color);
   font-size: calc(0.073 * var(--grid-width));
   text-align: center;
   padding-top: 5%;
 }
 
-.selected-cell {
-  background-color: var(--highlighted-cell-color);
-  border: 0.1vmin solid var(--border-color);
-  color: var(--number-color);
+.initial-cell {
+  background-color: var(--cell-color);
+  color: var(--highlighted-cell-color);
 }
 
 .button-array {

@@ -27,10 +27,11 @@ function fillGrid() {
       let smallCell = document.getElementById("x" + xcoor + ycoor);
 
       if (smallCell.innerHTML === "-") {
-        smallCell.style.color = "rgb(240, 239, 239)";
+        smallCell.classList.remove("empty-cell");
+        smallCell.classList.add("unselected-cell");
         smallCell.innerHTML = grid_numbers["" + xcoor + ycoor];
       }
-      
+
     }
   }
 }
@@ -51,20 +52,21 @@ function displayGrid() {
 
     let bigcoor = get2DCoordinates(n, ncols);
     for (let j=0; j<nrows*ncols; j++) {
-      let smallcell = document.createElement("div");
-      smallcell.setAttribute("class", "small-cell");
+      let smallCell = document.createElement("div");
+      smallCell.setAttribute("class", "small-cell");
+      smallCell.classList.add("empty-cell");
 
       let smallcoor = get2DCoordinates(j, ncols);
       let xcoor = (nrows*bigcoor.x + smallcoor.x);
       let ycoor = (ncols*bigcoor.y + smallcoor.y);
 
-      smallcell.setAttribute("id", "x" + xcoor + ycoor);
-      smallcell.setAttribute("contenteditable", "true");
+      smallCell.setAttribute("id", "x" + xcoor + ycoor);
+      smallCell.setAttribute("contenteditable", "true");
 
-      smallcell.addEventListener("click", selectCell);
-      smallcell.addEventListener("touch", selectCell);
-      smallcell.innerHTML = "-";
-      bigcell.appendChild(smallcell);
+      smallCell.addEventListener("click", selectCell);
+      smallCell.addEventListener("touch", selectCell);
+      smallCell.innerHTML = "-";
+      bigcell.appendChild(smallCell);
     }
 
     gameGrid.appendChild(bigcell);
@@ -96,11 +98,37 @@ function get2DCoordinates(n, width) {
 function selectCell(event) {
   selectedCell = event.target;
   removeSelected();
+  selectedCell.classList.remove("empty-cell");
   selectedCell.classList.add("selected-cell");
   if (selectedCell.innerHTML === "-") {
     selectedCell.innerHTML = "";
   }
-  selectedCell.style.color = "rgb(240, 239, 239)";
+}
+
+function removeSelected() {
+  let cells = document.getElementsByClassName("small-cell");
+  for (let i=0; i<cells.length; i++) {
+    if (cells[i].classList.contains("selected-cell") & cells[i].innerHTML.length === 0) {
+      cells[i].classList.remove("selected-cell");
+      cells[i].classList.add("empty-cell");
+      cells[i].innerHTML = "-";
+    }
+    if (cells[i].classList.contains("selected-cell")) {
+      cells[i].classList.remove("selected-cell");
+      cells[i].classList.add("unselected-cell");
+    }
+  }
+}
+
+function reset() {
+  selectedCells = [];
+  removeSelected();
+  let cells = document.getElementsByClassName("small-cell");
+  for (let i=0; i<cells.length; i++) {
+    cells[i].innerHTML = "-";
+    cells[i].classList.remove("unselected-cell", "initial-cell");
+    cells[i].classList.add("empty-cell");
+  }
 }
 
 function getCellNumbers() {
@@ -114,28 +142,13 @@ function getCellNumbers() {
       let ycoor = (ncols*bigcoor.y + smallcoor.y);
       let smallCell = document.getElementById("x" + xcoor + ycoor);
       let initialCondition = smallCell.innerHTML;
+      smallCell.classList.add("unselected-cell");
 
       if (initialCondition !== "-") {
-        smallCell.style.color = "rgb(68, 158, 233)";
+        smallCell.classList.remove("unselected-cell");
+        smallCell.classList.add("initial-cell");
         selectedCells.push(smallCell.id + initialCondition);
       }
     }
-  }
-}
-
-function removeSelected() {
-  let cells = document.getElementsByClassName("small-cell");
-  for (let i=0; i<cells.length; i++) {
-    cells[i].classList.remove("selected-cell");
-  }
-}
-
-function reset() {
-  selectedCells = [];
-  removeSelected();
-  let cells = document.getElementsByClassName("small-cell");
-  for (let i=0; i<cells.length; i++) {
-    cells[i].innerHTML = "-";
-    cells[i].style.color = "rgba(240, 239, 239, 0)";
   }
 }
