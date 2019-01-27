@@ -51,7 +51,7 @@
 
       <h2 style="text-align: center;">What to do?</h2>
 
-      <p>Click on "Solve!" to solve the Sudoku game, and on "Reset" to clear the grid and start again. The grid is filled with a sample Sudoku game, just reset the game and introduce the initial number clues of the Sudoku game you want to solve. Click on any cell to edit its content. You can also type any initial clues you like (as long as they satisfy the Sudoku rules), but be aware that, in that case, the solution may not me unique.</p>
+      <p>Click on "Solve!" to solve the Sudoku game, and on "Reset" to clear the grid and start again. The grid is filled with a sample Sudoku game, just reset the game and introduce the initial number clues of the Sudoku game you want to solve. Click on any cell to edit its content. You can also type any initial clues you like as long as they satisfy the Sudoku rules, but be aware that, in that case, the solution may not me unique.</p>
 
       <h2 style="text-align: center;">How does it work?</h2>
 
@@ -70,7 +70,7 @@
         $x_{ijn} = 1 \;\; \,\forall i,j,n \in \text{I} \;\; (5)$
       </p>
 
-      <p>The constraints in this ILP define the feasible Sudoku solution space. Specifically, constraint (1) guarantees that each cell in the grid gets only one number assigned, constraints (2) and (3) restrict rows and columns, respectively, to have all numbers from 1 to 9 and constraint (4) guarantees that all squares ( ⃞ ) in the grid contain all numbers from 1 to 9.</p>
+      <p>The constraints in this ILP define the feasible Sudoku solution space. Specifically, the constraints (1) guarantee that each cell in the grid gets only one number $n$ assigned, constraints (2) and (3) restrict rows and columns, respectively, to have all numbers from 1 to 9 and constraints (4) guarantee that all squares ( ⃞ ) in the grid contain all numbers from 1 to 9. Finally, the constraints (5) enforce the initial clues that you typed in before solving. To this end, it constraints each variable in the set of initial clues $I$ to have a value of 1, for instance, in the sample Sudoku, the cell in the first row and the second column has a value of 2, hence $x_{112} = 1$ is included in the set of constraints in (5).</p>
 
     </div>
 
