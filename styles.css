@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: rgba(0, 0, 0, 1);
     --cell-color: rgba(50, 50, 50, 1);
     --highlighted-cell-color: rgb(51, 127, 190);
@@ -25,15 +25,34 @@ h1 {
 
 footer {
   color: var(--number-color);
-  position: absolute;
+  margin-left: calc(0.5 * (100vw - var(--grid-width)));
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  /* position: absolute;
   bottom: 5vh;
-  left: 5vw;
+  left: 5vw; */
   font-size: 1.3vw;
 }
 
 a {
   text-decoration: none;
   color: var(--highlighted-cell-color);
+}
+
+p {
+  text-align: justify;
+  font-size: 1.3em;
+}
+
+#about-container {
+  color: var(--number-color);
+  margin-left: calc(0.5 * (100vw - var(--grid-width)));
+  margin-right: calc(0.5 * (100vw - var(--grid-width)));
+  margin-top: 10vh;
+}
+
+#ilp {
+  margin-left: calc(0.22 * (100vw - var(--grid-width)));
 }
 
 #game_grid {
@@ -52,17 +71,17 @@ a {
 }
 
 .selected-cell {
-  background-color: var(--highlighted-cell-color);
+  /* background-color: var(--highlighted-cell-color); */
   color: var(--number-color);
 }
 
 .unselected-cell {
-  background-color: var(--cell-color);
+  /* background-color: var(--cell-color); */
   color: var(--number-color);
 }
 
 .empty-cell {
-  background-color: var(--cell-color);
+  /* background-color: var(--cell-color); */
   color: rgba(240, 239, 239, 0);
 }
 
@@ -71,6 +90,9 @@ a {
   font-size: calc(0.07 * var(--grid-width));
   text-align: center;
   padding-top: 5%;
+}
+.small-cell:focus {
+  background-color: var(--highlighted-cell-color);
 }
 
 .initial-cell {
@@ -88,10 +110,10 @@ a {
 .button {
   font-size: calc(0.12 * var(--button-array-width));
   width: calc(0.44 * var(--button-array-width));
-  height: calc(0.25 * var(--button-array-width));
+  height: calc(0.20 * var(--button-array-width));
   background-color: var(--highlighted-cell-color);
   border: none;
-  color: white;
+  color: var(--number-color);
   text-align: center;
   text-decoration: none;
   display: inline;
@@ -107,4 +129,22 @@ a {
 .button:active {
   box-shadow: 0 0.3vw var(--highlighted-cell-color);
   transform: translateY(4px);
+}
+
+::-webkit-scrollbar {
+  width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.25vw grey;
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--highlighted-cell-color);
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--highlighted-cell-color);
 }

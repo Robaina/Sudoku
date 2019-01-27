@@ -1,17 +1,16 @@
 let ncols = nrows = 3;
 let selectedCell;
-// let selectedCells = ["x012", "x053", "x084",
-//                      "x108", "x137", "x163",
-//                      "x179", "x227", "x276",
-//                      "x281", "x323", "x347",
-//                      "x388", "x426", "x452",
-//                      "x461", "x473", "x505",
-//                      "x614", "x638", "x686",
-//                      "x728", "x741", "x772",
-//                      "x815", "x859"];
+let initialCellValues = {"x01": 2, "x05": 3, "x08": 4,
+                         "x10": 8, "x13": 7, "x16": 3,
+                         "x17": 9, "x22": 7, "x27": 6,
+                         "x28": 1, "x32": 3, "x34": 7,
+                         "x38": 8, "x42": 6, "x45": 2,
+                         "x46": 1, "x47": 3, "x50": 5,
+                         "x61": 4, "x63": 8, "x68": 6,
+                         "x72": 8, "x74": 1, "x77": 2,
+                         "x81": 5, "x85": 9};
 let selectedCells = [];
 let selectedCellsNumbers = [];
-
 
 function fillGrid() {
   let grid_numbers = getGridNumbers(solution);
@@ -54,7 +53,6 @@ function displayGrid() {
     for (let j=0; j<nrows*ncols; j++) {
       let smallCell = document.createElement("div");
       smallCell.setAttribute("class", "small-cell");
-      smallCell.classList.add("empty-cell");
 
       let smallcoor = get2DCoordinates(j, ncols);
       let xcoor = (nrows*bigcoor.x + smallcoor.x);
@@ -62,10 +60,17 @@ function displayGrid() {
 
       smallCell.setAttribute("id", "x" + xcoor + ycoor);
       smallCell.setAttribute("contenteditable", "true");
-
       smallCell.addEventListener("click", selectCell);
       smallCell.addEventListener("touch", selectCell);
-      smallCell.innerHTML = "-";
+
+      if (Object.keys(initialCellValues).includes(smallCell.id)) {
+        smallCell.innerHTML = initialCellValues[smallCell.id];
+        smallCell.classList.add("unselected-cell");
+      } else {
+        smallCell.classList.add("empty-cell");
+        smallCell.innerHTML = "-";
+      }
+
       bigcell.appendChild(smallCell);
     }
 

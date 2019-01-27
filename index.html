@@ -11,6 +11,19 @@
     <script src="glpk.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Sets $ as inline MathJax symbols -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+      });
+    </script>
+
+    <!-- Allows MathJax in the document-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=default" async></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131412021-1"></script>
     <script>
@@ -32,20 +45,42 @@
     <div class="button-array">
       <button class="button" id="start" onclick="solveMILP()">Solve!</button>
       <button class="button" id="reset" onclick="reset()">Reset</button>
-      <!-- <button class="button" id="reset" onclick="showAbout()">About</button> -->
     </div>
 
+    <div class="container" id="about-container">
 
-    <!-- <footer id="name">
-  		<a href="https://github.com/Robaina" id="name-text">Semidán Robaina Estévez, 2018</a>
-  	</footer> -->
+      <h2 style="text-align: center;">What to do?</h2>
+
+      <p>Click on "Solve!" to solve the Sudoku game, and on "Reset" to clear the grid and start again. The grid is filled with a sample Sudoku game, just reset the game and introduce the initial number clues of the Sudoku game you want to solve. Click on any cell to edit its content. You can also type any initial clues you like (as long as they satisfy the Sudoku rules), but be aware that, in that case, the solution may not me unique.</p>
+
+      <h2 style="text-align: center;">How does it work?</h2>
+
+      <p>The rules to solve a <a href="https://en.wikipedia.org/wiki/Sudoku">Sudoku</a> game are simple, fill in the empty cells with numbers from 1 to 9 such that: (<i>i</i>) each row and column in the grid contains all numbers from 1 to 9 and (<i>ii</i>) each square in the grid also contains all numbers from 1 to 9. A number of <a href="https://en.wikipedia.org/wiki/Sudoku_solving_algorithms">algorithms</a> are able to solve most Sudoku games efficiently. Here, we implement a constraint-based approach in which we transform the Sudoku game into an <a href="https://en.wikipedia.org/wiki/Integer_programming">Integer Linear Program</a> (ILP). An ILP optimizes a linear objective function over a feasible domain, which is defined by a set of linear constraints, plus the addition that all variables must have integer values. Thus, solving the Sudoku game translates to finding a feasible solution to our ILP.</p>
+
+      <p>Each cell in the Sudoku grid, situated in row $i$ and column $j$ has 9 binary variables assigned: $x_{ijn} \;\,\forall n \in {1,...,9}$. These variables represent all possible values that a cell can have, for instance, if the cell in the first row and first column on the grid has a value of 1, then $x_{111} = 1$. After defining the binary variables, it isn't hard to define an ILP whose solution will be a Sudoku solution:</p>
+
+      <p id="ilp">
+        $\max\limits_{x} \; 0$ <br>
+        s.t. <br>
+        <br>
+        $\sum\limits_{n=1}^{9} x_{ijn} = 1 \;\; \,\forall i,j \;\; (1)$ <br>
+        $\sum\limits_{j=1}^{9} x_{ijn} = 1 \;\; \,\forall i,n \;\; (2)$ <br>
+        $\sum\limits_{i=1}^{9} x_{ijn} = 1 \;\; \,\forall j,n \;\; (3)$ <br>
+        $\sum\limits_{i,j \in \; ⃞ } x_{ijn} = 1 \;\; \,\forall \;\; ⃞  \;\;,n \;\; (4)$ <br>
+        $x_{ijn} = 1 \;\; \,\forall i,j,n \in \text{I} \;\; (5)$
+      </p>
+
+      <p>The constraints in this ILP define the feasible Sudoku solution space. Specifically, constraint (1) guarantees that each cell in the grid gets only one number assigned, constraints (2) and (3) restrict rows and columns, respectively, to have all numbers from 1 to 9 and constraint (4) guarantees that all squares ( ⃞ ) in the grid contain all numbers from 1 to 9.</p>
+
+    </div>
+
     <footer>
         <p id="credits"><a href="https://www.github.com/Robaina" id="me">Semidán Robaina Estévez</a>, 2018<br>
         Using <a href="http://hgourvest.github.io/glpk.js/">Glpk.js</a></p>
     </footer>
 
 
-  <script src="lp.js"></script>
+  <script src="ilp.js"></script>
   <script src="sudoku.js"></script>
   </body>
 </html>
