@@ -7,6 +7,7 @@ body, html {
     background-color: rgba(0, 0, 0, 1);
     --cell-color: rgba(50, 50, 50, 1);
     --highlighted-cell-color: rgb(51, 127, 190);
+    --highlighted-text-color: rgb(62, 156, 235);
     --number-color: rgb(240, 239, 239);
     --border-color: rgb(159, 159, 159);
     --grid-width: 60vmin;
@@ -36,7 +37,7 @@ footer {
 
 a {
   text-decoration: none;
-  color: var(--highlighted-cell-color);
+  color: var(--highlighted-text-color);
 }
 
 p {
