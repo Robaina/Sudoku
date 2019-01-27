@@ -29,9 +29,6 @@ footer {
   margin-left: calc(0.5 * (100vw - var(--grid-width)));
   margin-top: 5vh;
   margin-bottom: 2vh;
-  /* position: absolute;
-  bottom: 5vh;
-  left: 5vw; */
   font-size: 1.3vw;
 }
 
@@ -148,4 +145,29 @@ p {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--highlighted-cell-color);
+}
+
+@media only screen and (max-width: 768px) {
+
+  body {
+    --grid-width: 80vmin;
+  }
+
+  footer {
+    color: var(--number-color);
+    margin-left: calc(0.5 * (100vw - var(--grid-width)));
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    font-size: 1em;
+  }
+
+  p {
+    text-align: justify;
+    font-size: 1.1em;
+  }
+
+  #ilp {
+    margin-left: calc(0.5 * (100vw - var(--grid-width)));
+  }
+
 }
