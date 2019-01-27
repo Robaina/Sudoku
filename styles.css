@@ -6,7 +6,6 @@ body, html {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
     --cell-color: rgba(50, 50, 50, 1);
-    /* rgb(32, 86, 131); */
     --highlighted-cell-color: rgb(51, 127, 190);
     --number-color: rgb(240, 239, 239);
     --border-color: rgb(159, 159, 159);
@@ -30,6 +29,11 @@ footer {
   bottom: 5vh;
   left: 5vw;
   font-size: 1.3vw;
+}
+
+a {
+  text-decoration: none;
+  color: var(--highlighted-cell-color);
 }
 
 #game_grid {
@@ -64,7 +68,7 @@ footer {
 
 .small-cell {
   border: var(--s-border-width) solid var(--border-color);
-  font-size: calc(0.073 * var(--grid-width));
+  font-size: calc(0.07 * var(--grid-width));
   text-align: center;
   padding-top: 5%;
 }
