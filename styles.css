@@ -153,6 +153,10 @@ p {
     --grid-width: 80vmin;
   }
 
+  h1 {
+    font-size: 9vw;
+  }
+
   footer {
     color: var(--number-color);
     margin-left: calc(0.5 * (100vw - var(--grid-width)));
@@ -167,7 +171,7 @@ p {
   }
 
   #ilp {
-    margin-left: calc(0.5 * (100vw - var(--grid-width)));
+    margin-left: calc(1 * (100vw - var(--grid-width)));
   }
 
 }
