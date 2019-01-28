@@ -25,7 +25,7 @@ function fillGrid() {
       let ycoor = (ncols*bigcoor.y + smallcoor.y);
       let smallCell = document.getElementById("x" + xcoor + ycoor);
 
-      if (smallCell.innerHTML === "-") {
+      if (smallCell.innerHTML === "0") {
         smallCell.classList.remove("empty-cell");
         smallCell.classList.add("unselected-cell");
         smallCell.innerHTML = grid_numbers["" + xcoor + ycoor];
@@ -68,7 +68,7 @@ function displayGrid() {
         smallCell.classList.add("unselected-cell");
       } else {
         smallCell.classList.add("empty-cell");
-        smallCell.innerHTML = "-";
+        smallCell.innerHTML = "0";
       }
 
       bigcell.appendChild(smallCell);
@@ -105,7 +105,7 @@ function selectCell(event) {
   removeSelected();
   selectedCell.classList.remove("empty-cell");
   selectedCell.classList.add("selected-cell");
-  if (selectedCell.innerHTML === "-") {
+  if (selectedCell.innerHTML === "0") {
     selectedCell.innerHTML = "";
   }
 }
@@ -116,7 +116,7 @@ function removeSelected() {
     if (cells[i].classList.contains("selected-cell") & cells[i].innerHTML.length === 0) {
       cells[i].classList.remove("selected-cell");
       cells[i].classList.add("empty-cell");
-      cells[i].innerHTML = "-";
+      cells[i].innerHTML = "0";
     }
     if (cells[i].classList.contains("selected-cell")) {
       cells[i].classList.remove("selected-cell");
@@ -130,7 +130,7 @@ function reset() {
   removeSelected();
   let cells = document.getElementsByClassName("small-cell");
   for (let i=0; i<cells.length; i++) {
-    cells[i].innerHTML = "-";
+    cells[i].innerHTML = "0";
     cells[i].classList.remove("unselected-cell", "initial-cell");
     cells[i].classList.add("empty-cell");
   }
@@ -149,7 +149,7 @@ function getCellNumbers() {
       let initialCondition = smallCell.innerHTML;
       smallCell.classList.add("unselected-cell");
 
-      if (initialCondition !== "-") {
+      if (initialCondition !== "0") {
         smallCell.classList.remove("unselected-cell");
         smallCell.classList.add("initial-cell");
         selectedCells.push(smallCell.id + initialCondition);
