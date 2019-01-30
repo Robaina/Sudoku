@@ -3,4 +3,4 @@ A sudoku game solver right in your browser. It solves _any_ Sudoku game. It impl
 
 <img style="margin:0px auto;display:block" src="sketch.png" alt="Responsive image" width=450> 
 
-Solving the integer linear program in your browser is possible thanks to the awesome library <a href="http://hgourvest.github.io/glpk.js">Glpk.js</a>.
+Solving the integer linear program in your browser is possible thanks to the awesome library <a href="http://hgourvest.github.io/glpk.js">Glpk.js</a>, which was bundle for usage in the browser with <a href="http://browserify.org">Browserify</a>.
